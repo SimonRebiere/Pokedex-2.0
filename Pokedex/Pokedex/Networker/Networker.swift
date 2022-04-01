@@ -16,18 +16,15 @@ enum HTTPMethods: String {
 
 //makes the request
 protocol NetworkingMethods {
-    associatedtype Endpoint: EndpointType
-    
     //This function takes a generic endpoint to handle all request in the same way,
     //Endpoint contains all necessary informations for the URL to be constructed
-    func fetchDecodable<DecodableObject: Decodable>(endpoint: Endpoint, type: DecodableObject.Type, decoder: JSONDecoder, completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void)
+    func fetchDecodable<DecodableObject: Decodable>(endpoint: EndpointType, type: DecodableObject.Type, decoder: JSONDecoder, completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void)
 }
 
-class Networker<Endpoint: EndpointType>: NetworkingMethods {
-    
-    func fetchDecodable<DecodableObject: Decodable>(endpoint: Endpoint,
+class Networker: NetworkingMethods {
+    func fetchDecodable<DecodableObject: Decodable>(endpoint: EndpointType,
                                                     type: DecodableObject.Type,
-                                                    decoder: JSONDecoder = JSONDecoder(),
+                                                    decoder: JSONDecoder,
                                                     completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void) {
         var dataTask: URLSessionDataTask?
         dataTask?.cancel()
@@ -46,7 +43,7 @@ class Networker<Endpoint: EndpointType>: NetworkingMethods {
                     let response = try decoder.decode(DecodableObject.self, from: data)
                     completion(.success(response))
                 } catch let error {
-                    completion(.failure(NetworkingError(errorType: .decodingFailed, message: "Failed to decode object")))
+                    completion(.failure(NetworkingError(errorType: .decodingFailed, message: error.localizedDescription)))
                 }
             } else {
                 completion(.failure(NetworkingError(errorType: .emptyData, message: "Data was empty")))
@@ -57,7 +54,7 @@ class Networker<Endpoint: EndpointType>: NetworkingMethods {
     
     //In order to create the url needed for the request, it is passed to this function, which will extract informations
     //from the endpoint. The viability of this url will be verified in the caller.
-    private func composeURL(endpoint: Endpoint) -> URL? {
+    private func composeURL(endpoint: EndpointType) -> URL? {
         var urlComponents = URLComponents(string: endpoint.baseUrl + endpoint.path)
         
         if let params = endpoint.additionnalParams {
