@@ -12,7 +12,7 @@ protocol PokemonListServiceMethods {
     func getPokemonList(additionalParams: [String: Any]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void)
 }
 
-//warning: chercher si c'est plus opti de faire ses service en tant que class ou struct
+//warning: A class might be better need to be checked
 struct PokemonListService: PokemonListServiceMethods {
     
     let networker: NetworkingMethods
