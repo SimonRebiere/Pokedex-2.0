@@ -21,10 +21,6 @@ protocol NetworkingMethods {
     //This function takes a generic endpoint to handle all request in the same way,
     //Endpoint contains all necessary informations for the URL to be constructed
     func fetchDecodable<DecodableObject: Decodable>(endpoint: Endpoint, type: DecodableObject.Type, decoder: JSONDecoder, completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void)
-    
-    //In order to create the url needed for the request, it is passed to this function, which will extract informations
-    //from the endpoint. The viability of this url will be verified in the caller.
-    func composeURL(endpoint: Endpoint) -> URL?
 }
 
 class Networker<Endpoint: EndpointType>: NetworkingMethods {
@@ -50,8 +46,6 @@ class Networker<Endpoint: EndpointType>: NetworkingMethods {
                     let response = try decoder.decode(DecodableObject.self, from: data)
                     completion(.success(response))
                 } catch let error {
-                    #warning("don't forget to remove print in finale version")
-                    print(error)
                     completion(.failure(NetworkingError(errorType: .decodingFailed, message: "Failed to decode object")))
                 }
             } else {
@@ -61,7 +55,9 @@ class Networker<Endpoint: EndpointType>: NetworkingMethods {
         dataTask?.resume()
     }
     
-    func composeURL(endpoint: Endpoint) -> URL? {
+    //In order to create the url needed for the request, it is passed to this function, which will extract informations
+    //from the endpoint. The viability of this url will be verified in the caller.
+    private func composeURL(endpoint: Endpoint) -> URL? {
         var urlComponents = URLComponents(string: endpoint.baseUrl + endpoint.path)
         
         if let params = endpoint.additionnalParams {
@@ -69,7 +65,6 @@ class Networker<Endpoint: EndpointType>: NetworkingMethods {
             for param in params {
                 queries.append(URLQueryItem(name: param.key, value: param.value as? String))
             }
-            
             urlComponents?.queryItems = queries
         }
         return urlComponents?.url

@@ -12,17 +12,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        pleaseWork()
     }
-    
-    func pleaseWork() {
-        let service = PokemonListService()
-        service.getPokemonList(completion: { response in
-            print(response)
-        })
-    }
-
-
 }
 

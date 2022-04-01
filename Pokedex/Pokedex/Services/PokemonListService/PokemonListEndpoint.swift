@@ -8,7 +8,6 @@
 import Foundation
 
 struct PokemonListEndpoint: EndpointType {
-
     var path: String { "pokemon" }
     var method: HTTPMethods { .get }
     
