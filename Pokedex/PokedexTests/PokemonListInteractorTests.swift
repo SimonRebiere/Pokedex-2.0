@@ -29,18 +29,11 @@ class PokemonListInteractorTests: XCTestCase {
     }
     
     //Will add real error handling tomorrow morning before making function
-    func testLoadData_failure() {
-        service.shouldFail = true
-        
-       // interactor
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func testLoadData_failure() {
+//        service.shouldFail = true
+//
+//       // interactor
+//    }
 
 }
 
