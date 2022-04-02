@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol PokemonListServiceMethods {
-    func getPokemonList(additionalParams: [String: Any]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void)
+    func getPokemonList(queryParams: [URLQueryItem]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void)
 }
 
 //warning: A class might be better need to be checked
@@ -21,7 +21,7 @@ struct PokemonListService: PokemonListServiceMethods {
         self.networker = networker
     }
     
-    func getPokemonList(additionalParams: [String: Any]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void) {
-        networker.fetchDecodable(endpoint: PokemonListEndpoint(additionnalParams: additionalParams), type: PokemonListResponse.self, decoder: JSONDecoder(), completion: completion)
+    func getPokemonList(queryParams: [URLQueryItem]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void) {
+        networker.fetchDecodable(endpoint: PokemonListEndpoint(queryParams: queryParams), type: PokemonListResponse.self, decoder: JSONDecoder(), completion: completion)
     }
 }
