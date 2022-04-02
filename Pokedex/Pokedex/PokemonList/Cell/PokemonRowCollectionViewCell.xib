@@ -8,6 +8,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="pixelmix.ttf">
+            <string>pixelmix</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,14 +34,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPh-RK-lzT">
-                                <rect key="frame" x="72" y="18.5" width="39.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="72" y="21" width="49" height="14"/>
+                                <fontDescription key="fontDescription" name="pixelmix" family="pixelmix" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlA-3k-q3q">
-                                <rect key="frame" x="329" y="18" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="329" y="22" width="42" height="12"/>
+                                <fontDescription key="fontDescription" name="pixelmix" family="pixelmix" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -46,6 +51,7 @@
                             <constraint firstItem="bUI-6s-LmO" firstAttribute="leading" secondItem="KRa-1u-dDD" secondAttribute="leading" constant="8" id="Ffp-OJ-DoG"/>
                             <constraint firstItem="bUI-6s-LmO" firstAttribute="centerY" secondItem="KRa-1u-dDD" secondAttribute="centerY" id="HFU-jZ-SGw"/>
                             <constraint firstAttribute="trailing" secondItem="qlA-3k-q3q" secondAttribute="trailing" constant="16" id="JHM-Vd-lWB"/>
+                            <constraint firstItem="qlA-3k-q3q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mPh-RK-lzT" secondAttribute="trailing" constant="16" id="Nhf-Z1-GzR"/>
                             <constraint firstItem="mPh-RK-lzT" firstAttribute="leading" secondItem="bUI-6s-LmO" secondAttribute="trailing" constant="16" id="Oan-xk-Nbb"/>
                             <constraint firstAttribute="height" constant="56" id="Vb0-vz-31J"/>
                             <constraint firstItem="mPh-RK-lzT" firstAttribute="centerY" secondItem="KRa-1u-dDD" secondAttribute="centerY" id="sPG-ev-Qub"/>

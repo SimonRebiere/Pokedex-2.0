@@ -28,7 +28,7 @@ class PokemonRowCollectionViewCell: UICollectionViewCell {
         
         imagePokemon.backgroundColor = UIColor(rgb: 0x8D9DB6)
         imagePokemon.layer.cornerRadius = 24
-
+        labelName.numberOfLines = 0
     }
     
     func configure(model: PokemonListViewModel.PokemonRow) {

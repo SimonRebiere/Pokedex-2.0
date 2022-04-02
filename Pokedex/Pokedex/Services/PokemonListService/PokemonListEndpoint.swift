@@ -11,9 +11,9 @@ struct PokemonListEndpoint: EndpointType {
     var path: String { "pokemon" }
     var method: HTTPMethods { .get }
     
-    var additionnalParams: [String: Any]?
+    var queryParams: [URLQueryItem]?
     
-    init(additionnalParams: [String: Any]? = nil) {
-        self.additionnalParams = additionnalParams
+    init(queryParams: [URLQueryItem]? = nil) {
+        self.queryParams = queryParams
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol PokemonListPresenterMethods {
-    func present(dataModel: PokemonListDataModel)
+    func presentInitialViewModel(dataModel: PokemonListDataModel)
+    func presentMorePokemon(dataModel: PokemonListDataModel)
 }
 
 class PokemonListPresenter: PokemonListPresenterMethods {
@@ -19,7 +20,19 @@ class PokemonListPresenter: PokemonListPresenterMethods {
         self.viewController = viewController
     }
     
-    func present(dataModel: PokemonListDataModel) {
+    func presentInitialViewModel(dataModel: PokemonListDataModel) {
+        let rows = generateViewModel(dataModel: dataModel)
+        let viewModel = PokemonListViewModel(rows: rows)
+        viewController?.layout(.initialViewModel(viewModel))
+    }
+    
+    func presentMorePokemon(dataModel: PokemonListDataModel) {
+        let rows = generateViewModel(dataModel: dataModel)
+        let viewModel = PokemonListViewModel(rows: rows)
+        viewController?.layout(.loadMore(viewModel))
+    }
+    
+    private func generateViewModel(dataModel: PokemonListDataModel) -> [PokemonListViewModel.PokemonRow] {
         var count = 1
         var rows: [PokemonListViewModel.PokemonRow] = []
 
@@ -28,18 +41,6 @@ class PokemonListPresenter: PokemonListPresenterMethods {
             rows.append(PokemonListViewModel.PokemonRow(imageURL: url, name: $0.name, number: "n°\(count)"))
             count += 1
         })
-        
-        let viewModel = PokemonListViewModel(rows: rows)
-        viewController?.layout(viewModel: viewModel)
+        return rows
     }
-}
-
-struct PokemonListViewModel {
-    struct PokemonRow {
-        var imageURL: URL?
-        var name: String
-        var number: String
-    }
-    
-    let rows: [PokemonRow]
 }

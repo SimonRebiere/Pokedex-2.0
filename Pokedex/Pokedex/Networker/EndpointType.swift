@@ -11,7 +11,7 @@ protocol EndpointType {
     var baseUrl: String { get }
     var path: String { get }
     var method: HTTPMethods { get }
-    var additionnalParams: [String: Any]? { get set}
+    var queryParams: [URLQueryItem]? { get set}
 }
 
 extension EndpointType {

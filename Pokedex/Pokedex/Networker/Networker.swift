@@ -56,14 +56,8 @@ class Networker: NetworkingMethods {
     //from the endpoint. The viability of this url will be verified in the caller.
     private func composeURL(endpoint: EndpointType) -> URL? {
         var urlComponents = URLComponents(string: endpoint.baseUrl + endpoint.path)
-        
-        if let params = endpoint.additionnalParams {
-            var queries: [URLQueryItem] = []
-            for param in params {
-                queries.append(URLQueryItem(name: param.key, value: param.value as? String))
-            }
-            urlComponents?.queryItems = queries
-        }
+        urlComponents?.queryItems = endpoint.queryParams
+
         return urlComponents?.url
     }
 }

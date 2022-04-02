@@ -28,45 +28,36 @@ class PokemonListInteractor: PokemonListInteractorMethods {
     }
     
     func loadData() {
-        servicePokemonList.getPokemonList(additionalParams: nil, completion: { [weak self] result in
+        servicePokemonList.getPokemonList(queryParams: nil, completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 self.dataModel = PokemonListDataModel(response: response)
                 guard let dataModel = self.dataModel else { return }
                 print("oui")
-                self.presenter.present(dataModel: dataModel)
+                self.presenter.presentInitialViewModel(dataModel: dataModel)
             case .failure(let error):
-                //maybe show alert or toast
                 print(error)
             }
         })
     }
     
     func loadMore() {
+        guard let dataModel = dataModel,
+              let url = dataModel.nextURL,
+              let composedUrl = URLComponents(url: url , resolvingAgainstBaseURL: true),
+              let params = composedUrl.queryItems
+        else { return }
         
-    }
-}
-
-class PokemonListDataModel {
-    
-    var nextURL: URL?
-    var pokemonList: [Pokemon]
-    
-    struct Pokemon {
-        var name: String
-        var url: URL?
-    }
-    
-    init(response: PokemonListResponse) {
-        self.nextURL = URL(string: response.next ?? "")
-        //might wanna optimize that
-        self.pokemonList = response.pokemonList.map( { Pokemon(name: $0.name, url: URL(string: $0.url)) } )
-    }
-    
-    func update(with response: PokemonListResponse) {
-        nextURL = URL(string: response.next ?? "")
-        let newPokemons = response.pokemonList.map( { Pokemon(name: $0.name, url: URL(string: $0.url)) })
-        pokemonList.append(contentsOf: newPokemons)
+        servicePokemonList.getPokemonList(queryParams: params, completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                dataModel.update(with: response)
+                self.presenter.presentMorePokemon(dataModel: dataModel)
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 }
