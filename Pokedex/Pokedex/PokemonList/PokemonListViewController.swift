@@ -18,6 +18,7 @@ class PokemonListViewController: UIViewController, PokemonListViewMethods {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .blue
     }
     
     func layout() {
