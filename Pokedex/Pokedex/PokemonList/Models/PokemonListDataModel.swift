@@ -7,6 +7,8 @@
 
 import Foundation
 
+//Chose to use a class here for the mutability of the model, the list can go up to 1000 elements
+//So I want to avoid fully recreating it every time, since it's already done with the ViewModel
 class PokemonListDataModel {
 
     var nextURL: URL?

@@ -10,6 +10,7 @@ import Foundation
 protocol PokemonListPresenterMethods {
     func presentInitialViewModel(dataModel: PokemonListDataModel)
     func presentMorePokemon(dataModel: PokemonListDataModel)
+    func presentError(error: NetworkingError)
 }
 
 class PokemonListPresenter: PokemonListPresenterMethods {
@@ -42,5 +43,10 @@ class PokemonListPresenter: PokemonListPresenterMethods {
             count += 1
         })
         return rows
+    }
+    
+    func presentError(error: NetworkingError) {
+        let errorMessage = error.errorType.description
+        viewController?.layout(.showError(errorMessage))
     }
 }

@@ -20,8 +20,8 @@ enum NetworkingErrorType {
     
     var description: String {
         switch self {
-        case .emptyData: return "Networking Error: The service recovered empty data where it should not."
-        case .decodingFailed: return "Networking Error: Failed to decode data sent."
+        case .emptyData: return "The service recovered empty data where it should not."
+        case .decodingFailed: return "Failed to decode data sent."
         case .networkError(let code): return "Networking Error: status code: \(code)"
         }
     }
