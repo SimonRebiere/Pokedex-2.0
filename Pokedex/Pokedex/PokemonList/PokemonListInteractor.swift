@@ -34,10 +34,9 @@ class PokemonListInteractor: PokemonListInteractorMethods {
             case .success(let response):
                 self.dataModel = PokemonListDataModel(response: response)
                 guard let dataModel = self.dataModel else { return }
-                print("oui")
                 self.presenter.presentInitialViewModel(dataModel: dataModel)
             case .failure(let error):
-                print(error)
+                self.presenter.presentError(error: error)
             }
         })
     }
@@ -53,10 +52,11 @@ class PokemonListInteractor: PokemonListInteractorMethods {
             guard let self = self else { return }
             switch result {
             case .success(let response):
+                //As data model is declared as a class updating this reference will update the class reference
                 dataModel.update(with: response)
                 self.presenter.presentMorePokemon(dataModel: dataModel)
             case .failure(let error):
-                print(error)
+                self.presenter.presentError(error: error)
             }
         })
     }
