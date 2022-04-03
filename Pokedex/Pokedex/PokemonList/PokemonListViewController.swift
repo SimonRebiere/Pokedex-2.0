@@ -11,6 +11,7 @@ import UIKit
 enum PokemonListViewLayout {
     case initialViewModel(PokemonListViewModel)
     case loadMore(PokemonListViewModel)
+    case showError(String)
 }
 
 protocol PokemonListViewMethods: AnyObject {
@@ -61,6 +62,12 @@ class PokemonListViewController: UIViewController, PokemonListViewMethods {
                     }
                     self?.pokemonListCollectionView.insertItems(at: indexPathes)
                 })
+            }
+        case .showError(let errorMessage):
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "An error happened", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
        
