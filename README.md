@@ -11,3 +11,5 @@ For readability of the code I wrote comments, on important function, in a way th
 For ease of use and image caching I used a great external lib named Kingfisher.
 
 If I can get more time in the future I'll probably add a detailled view for each pokemon to shows more complex UI implementation and UX skills. For the moment this first version already show some of my skills which is the primary goal.
+
+Thanks to Andrew Tyler for the pixaleted font you can find more of his work on www.AndrewTyler.net and contact him font@andrewtyler.net
