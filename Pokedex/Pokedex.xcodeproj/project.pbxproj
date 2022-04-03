@@ -33,6 +33,7 @@
 		11BFB8ED27F909640052A579 /* PokemonListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BFB8EC27F909640052A579 /* PokemonListDataModel.swift */; };
 		11BFB8EF27F9097E0052A579 /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BFB8EE27F9097E0052A579 /* PokemonListViewModel.swift */; };
 		11BFB8F127F90AF00052A579 /* PokemonListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BFB8F027F90AEF0052A579 /* PokemonListInteractorTests.swift */; };
+		11BFB8F327F9F2320052A579 /* PokemonListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BFB8F227F9F2320052A579 /* PokemonListPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		11BFB8EC27F909640052A579 /* PokemonListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListDataModel.swift; sourceTree = "<group>"; };
 		11BFB8EE27F9097E0052A579 /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
 		11BFB8F027F90AEF0052A579 /* PokemonListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListInteractorTests.swift; sourceTree = "<group>"; };
+		11BFB8F227F9F2320052A579 /* PokemonListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				11BFB8F027F90AEF0052A579 /* PokemonListInteractorTests.swift */,
+				11BFB8F227F9F2320052A579 /* PokemonListPresenterTests.swift */,
 			);
 			path = PokedexTests;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BFB8F327F9F2320052A579 /* PokemonListPresenterTests.swift in Sources */,
 				11BFB8F127F90AF00052A579 /* PokemonListInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

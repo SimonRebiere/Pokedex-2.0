@@ -28,13 +28,46 @@ class PokemonListInteractorTests: XCTestCase {
         XCTAssertEqual(2, presenter.dataModel?.pokemonList.count)
     }
     
-    //Will add real error handling tomorrow morning before making function
-//    func testLoadData_failure() {
-//        service.shouldFail = true
-//
-//       // interactor
-//    }
+    func testLoadData_async_success() {
+        let expectation = XCTestExpectation()
+        presenter.successExpectation = expectation
+        service.isAsync = true
+        interactor.loadData()
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertTrue(presenter.passInPresentInitial)
+        XCTAssertNotNil(presenter.dataModel?.nextURL)
+        XCTAssertEqual(2, presenter.dataModel?.pokemonList.count)
+        
+    }
+    
+    func testLoadData_failure() {
+        service.shouldFail = true
+        interactor.loadData()
+        
+        XCTAssertTrue(presenter.passInPresentError)
+    }
+    
+    func testLoadMore_success() {
+        interactor.loadData()
+        interactor.loadMore()
+        
+        XCTAssertTrue(presenter.passInPresentMore)
+        XCTAssertNotNil(presenter.dataModel?.nextURL)
+        XCTAssertEqual(6, presenter.dataModel?.pokemonList.count)
+    }
 
+    
+    func testLoadMore_failure() {
+        interactor.loadData()
+        service.shouldFail = true
+        interactor.loadMore()
+        
+        XCTAssertFalse(presenter.passInPresentMore)
+        XCTAssertTrue(presenter.passInPresentError)
+        XCTAssertNotNil(presenter.dataModel?.nextURL)
+        XCTAssertEqual(2, presenter.dataModel?.pokemonList.count)
+    }
 }
 
 
@@ -66,12 +99,12 @@ class MockPokemonListService: PokemonListServiceMethods {
 
 //Fake because this is a fake presenter used to make sure the data is received properly
 class FakePokemonListPresenter: PokemonListPresenterMethods {
-
     //Will be setted only when testing async
     var successExpectation: XCTestExpectation? = nil
     
     var passInPresentInitial: Bool = false
     var passInPresentMore: Bool = false
+    var passInPresentError: Bool = false
     
     //Used to check that the data received is conform to what the interactor should transmit
     var dataModel: PokemonListDataModel? = nil
@@ -84,5 +117,10 @@ class FakePokemonListPresenter: PokemonListPresenterMethods {
     
     func presentMorePokemon(dataModel: PokemonListDataModel) {
         passInPresentMore = true
+        self.dataModel = dataModel
+    }
+    
+    func presentError(error: NetworkingError) {
+        passInPresentError = true
     }
 }
