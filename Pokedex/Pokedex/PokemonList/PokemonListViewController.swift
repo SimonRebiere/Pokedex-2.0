@@ -43,8 +43,9 @@ class PokemonListViewController: UIViewController, PokemonListViewMethods {
         switch layoutType {
         case .initialViewModel(let pokemonListViewModel):
             self.viewModel = pokemonListViewModel
-            DispatchQueue.main.async { [weak self] in
-                self?.pokemonListCollectionView.reloadData()
+            //weak self not necessary in such closure since the viewController doesn't retain the DispatchQueue
+            DispatchQueue.main.async {
+                self.pokemonListCollectionView.reloadData()
             }
         case .loadMore(let pokemonListViewModel):
             let lastIndexToInsert = pokemonListViewModel.rows.count - 1
@@ -54,13 +55,13 @@ class PokemonListViewController: UIViewController, PokemonListViewMethods {
                 layout(.initialViewModel(pokemonListViewModel))
                 return
             }
-            DispatchQueue.main.async { [weak self] in
-                self?.pokemonListCollectionView.performBatchUpdates({
-                    self?.viewModel = pokemonListViewModel
+            DispatchQueue.main.async {
+                self.pokemonListCollectionView.performBatchUpdates({
+                    self.viewModel = pokemonListViewModel
                     let indexPathes: [IndexPath] = (firstIndexToInsert...lastIndexToInsert).map {
                         return IndexPath(row: $0, section: 0)
                     }
-                    self?.pokemonListCollectionView.insertItems(at: indexPathes)
+                    self.pokemonListCollectionView.insertItems(at: indexPathes)
                 })
             }
         case .showError(let errorMessage):
