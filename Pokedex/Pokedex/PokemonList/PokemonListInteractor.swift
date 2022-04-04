@@ -28,6 +28,7 @@ class PokemonListInteractor: PokemonListInteractorMethods {
     }
     
     func loadData() {
+        //Since the service is retained in the object weak self is necessary to avoid a retain cycle
         servicePokemonList.getPokemonList(queryParams: nil, completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
