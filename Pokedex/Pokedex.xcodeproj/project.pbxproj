@@ -78,10 +78,10 @@
 		11BFB8DB27F89ABE0052A579 /* PokemonRowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRowCollectionViewCell.swift; sourceTree = "<group>"; };
 		11BFB8DD27F89AD50052A579 /* PokemonRowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonRowCollectionViewCell.xib; sourceTree = "<group>"; };
 		11BFB8E027F8CB740052A579 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		11BFB8E327F8F4080052A579 /* pixelmix_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pixelmix_bold.ttf; path = ../../../../Downloads/pixelmix/pixelmix_bold.ttf; sourceTree = "<group>"; };
-		11BFB8E427F8F4080052A579 /* pixelmix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = pixelmix.ttf; path = ../../../../Downloads/pixelmix/pixelmix.ttf; sourceTree = "<group>"; };
-		11BFB8E527F8F4080052A579 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = license.txt; path = ../../../../Downloads/pixelmix/license.txt; sourceTree = "<group>"; };
-		11BFB8E627F8F4080052A579 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = readme.txt; path = ../../../../Downloads/pixelmix/readme.txt; sourceTree = "<group>"; };
+		11BFB8E327F8F4080052A579 /* pixelmix_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelmix_bold.ttf; sourceTree = "<group>"; };
+		11BFB8E427F8F4080052A579 /* pixelmix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelmix.ttf; sourceTree = "<group>"; };
+		11BFB8E527F8F4080052A579 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		11BFB8E627F8F4080052A579 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		11BFB8EC27F909640052A579 /* PokemonListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListDataModel.swift; sourceTree = "<group>"; };
 		11BFB8EE27F9097E0052A579 /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
 		11BFB8F027F90AEF0052A579 /* PokemonListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListInteractorTests.swift; sourceTree = "<group>"; };
