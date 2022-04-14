@@ -26,8 +26,7 @@ struct Networker: NetworkingMethods {
                                                     type: DecodableObject.Type,
                                                     decoder: JSONDecoder,
                                                     completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void) {
-        var dataTask: URLSessionDataTask?
-        dataTask?.cancel()
+        let dataTask: URLSessionDataTask?
     
         guard let url = composeURL(endpoint: endpoint) else { return }
         let urlSession: URLSession = URLSession(configuration: .default)
