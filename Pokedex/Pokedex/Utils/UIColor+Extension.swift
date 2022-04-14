@@ -24,4 +24,9 @@ extension UIColor {
               blue: rgb & 0xFF
           )
       }
+    
+    open class var lightGrey: UIColor { return UIColor(rgb: 0xBCCAD6) }
+    open class var darkGrey: UIColor { return UIColor(rgb: 0x30343F) }
+    open class var shadowBlue: UIColor { return UIColor(rgb: 0x8D9DB6) }
+    
 }

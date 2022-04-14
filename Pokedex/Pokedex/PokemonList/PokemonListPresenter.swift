@@ -13,7 +13,7 @@ protocol PokemonListPresenterMethods {
     func presentError(error: NetworkingError)
 }
 
-class PokemonListPresenter: PokemonListPresenterMethods {
+final class PokemonListPresenter: PokemonListPresenterMethods {
     
     weak var viewController: PokemonListViewMethods?
     

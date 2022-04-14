@@ -12,7 +12,7 @@ protocol PokemonListInteractorMethods {
     func loadMore()
 }
 
-class PokemonListInteractor: PokemonListInteractorMethods {
+final class PokemonListInteractor: PokemonListInteractorMethods {
     
     var dataModel: PokemonListDataModel?
     

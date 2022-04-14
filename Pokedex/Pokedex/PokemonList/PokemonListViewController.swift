@@ -28,8 +28,7 @@ class PokemonListViewController: UIViewController, PokemonListViewMethods {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pokemonListCollectionView.backgroundColor = UIColor(rgb: 0xBCCAD6)
-
+        pokemonListCollectionView.backgroundColor = UIColor.lightGrey
         registerCells()
         interactor.loadData()
     }

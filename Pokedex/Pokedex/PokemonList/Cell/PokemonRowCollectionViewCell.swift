@@ -21,10 +21,10 @@ class PokemonRowCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         layer.cornerRadius = 20
-        layer.borderColor = UIColor(rgb: 0x30343F).cgColor
+        layer.borderColor = UIColor.darkGrey.cgColor
         layer.borderWidth = 1
         
-        view.backgroundColor = UIColor(rgb: 0x8D9DB6)
+        view.backgroundColor = UIColor.shadowBlue
         imagePokemon.backgroundColor = .clear
         labelName.numberOfLines = 0
     }
