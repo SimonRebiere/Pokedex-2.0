@@ -34,14 +34,12 @@ class PokemonListPresenter: PokemonListPresenterMethods {
     }
     
     private func generateViewModel(dataModel: PokemonListDataModel) -> [PokemonListViewModel.PokemonRow] {
-        var count = 1
-        var rows: [PokemonListViewModel.PokemonRow] = []
-
-        dataModel.pokemonList.forEach({
+        let rows: [PokemonListViewModel.PokemonRow] = dataModel.pokemonList.enumerated().map({ index, pokemon in
+            let count = index + 1
             let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(count).png")
-            rows.append(PokemonListViewModel.PokemonRow(imageURL: url, name: $0.name, number: "n°\(count)"))
-            count += 1
+            return PokemonListViewModel.PokemonRow(imageURL: url, name: pokemon.name, number: "n°\(count)")
         })
+
         return rows
     }
     
