@@ -21,7 +21,7 @@ protocol NetworkingMethods {
     func fetchDecodable<DecodableObject: Decodable>(endpoint: EndpointType, type: DecodableObject.Type, decoder: JSONDecoder, completion: @escaping (Result<DecodableObject, NetworkingError>) -> Void)
 }
 
-class Networker: NetworkingMethods {
+struct Networker: NetworkingMethods {
     func fetchDecodable<DecodableObject: Decodable>(endpoint: EndpointType,
                                                     type: DecodableObject.Type,
                                                     decoder: JSONDecoder,

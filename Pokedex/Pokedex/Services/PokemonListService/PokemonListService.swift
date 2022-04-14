@@ -12,7 +12,6 @@ protocol PokemonListServiceMethods {
     func getPokemonList(queryParams: [URLQueryItem]?, completion: @escaping (Result<PokemonListResponse, NetworkingError>) -> Void)
 }
 
-//warning: A class might be better need to be checked
 struct PokemonListService: PokemonListServiceMethods {
     
     let networker: NetworkingMethods
